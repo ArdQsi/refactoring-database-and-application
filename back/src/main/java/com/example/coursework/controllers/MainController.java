@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
-
+@RequestMapping("/main")
 @RestController
 @RequiredArgsConstructor
 public class MainController {
-
     final private ResultService resultService;
 
-    @PostMapping("/main")
+    @PostMapping
     public List<Result> main(@Valid @RequestBody PriceRequestDto price) {
         List<Result> list = resultService.getResult(price.getPrice());
         return list;

@@ -6,10 +6,12 @@ import com.example.coursework.dto.ComponentsIdDto;
 import com.example.coursework.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
-
+@RequestMapping("/assemblies")
 @RestController
 @RequiredArgsConstructor
 public class AssemblyController {
@@ -21,9 +23,8 @@ public class AssemblyController {
     final private ProcessorsService processorsService;
     final private RamMemoryService ramMemoryService;
 
-    @PostMapping("/assemblies")
-    public PCAssembly getAssembly(@Valid @RequestBody ComponentsIdDto componentsId) {
-        System.out.println(componentsId.toString());
+    @PostMapping
+    public ResponseEntity<PCAssembly> getAssembly(@Valid @RequestBody ComponentsIdDto componentsId) {
         ComputerCases computerCases = computerCasesService.getById(componentsId.getComputercasesid());
         DataStorage dataStorage = dataStorageService.getById(componentsId.getDatastorageid());
         MotherBoards motherBoards = motherBoardsService.getById(componentsId.getMotherboardsid());
@@ -31,7 +32,13 @@ public class AssemblyController {
         Processors processors = processorsService.getById(componentsId.getProcessorsid());
         RamMemory ramMemory = ramMemoryService.getById(componentsId.getRam_memoryid());
         GraphicsCards graphicsCards = graphicsCardsService.getById(componentsId.getGraphicscardsid());
-        return new PCAssembly(computerCases, dataStorage, graphicsCards, motherBoards,
+
+        if(computerCases==null || dataStorage==null || motherBoards==null || powerSupply==null ||
+                processors==null || ramMemory==null || graphicsCards==null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        PCAssembly pcAssembly = new PCAssembly(computerCases, dataStorage, graphicsCards, motherBoards,
                 powerSupply, processors, ramMemory);
+        return ResponseEntity.ok(pcAssembly);
     }
 }

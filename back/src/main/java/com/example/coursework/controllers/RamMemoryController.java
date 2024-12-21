@@ -3,6 +3,8 @@ package com.example.coursework.controllers;
 import com.example.coursework.components.*;
 import com.example.coursework.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,11 @@ public class RamMemoryController {
     final private RamMemoryService ramMemoryService;
 
     @GetMapping
-    public List<RamMemory> getRamMemory() {
+    public ResponseEntity<List<RamMemory>> getRamMemory() {
         List<RamMemory> list = ramMemoryService.getAll();
-        return list;
+        if (list.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.ok(list);
     }
 }

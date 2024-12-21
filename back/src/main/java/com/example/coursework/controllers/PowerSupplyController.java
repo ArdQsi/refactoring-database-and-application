@@ -3,6 +3,8 @@ package com.example.coursework.controllers;
 import com.example.coursework.components.PowerSupply;
 import com.example.coursework.service.PowerSupplyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,11 @@ public class PowerSupplyController {
     final private PowerSupplyService powerSupplyService;
 
     @GetMapping
-    public List<PowerSupply> getPowerSupply() {
+    public ResponseEntity<List<PowerSupply>> getPowerSupply() {
         List<PowerSupply> list = powerSupplyService.getAll();
-        return list;
+        if (list.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.ok(list);
     }
 }
