@@ -1,4 +1,4 @@
-package com.example.coursework.сontrollers;
+package com.example.coursework.controllers;
 
 import com.example.coursework.database.Result;
 import com.example.coursework.dto.PriceRequestDto;

@@ -1,15 +1,12 @@
-package com.example.coursework.сontrollers;
+package com.example.coursework.controllers;
 
 import com.example.coursework.components.*;
 import com.example.coursework.database.PCAssembly;
 import com.example.coursework.dto.ComponentsIdDto;
-import com.example.coursework.dto.PriceRequestDto;
 import com.example.coursework.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 
