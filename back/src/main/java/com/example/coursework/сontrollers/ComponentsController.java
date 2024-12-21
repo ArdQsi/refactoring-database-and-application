@@ -1,7 +1,6 @@
 package com.example.coursework.сontrollers;
 
 import com.example.coursework.components.*;
-import com.example.coursework.dto.ComponentsIdDto;
 import com.example.coursework.dto.ComputerCasesFilterDto;
 import com.example.coursework.dto.ManufacturerRequestDto;
 import com.example.coursework.service.*;
@@ -36,7 +35,7 @@ public class ComponentsController {
     }
 
 
-    @GetMapping("/data-storage")
+    @GetMapping("/data-storages")
     public List<DataStorage> getDataStorage() {
         List<DataStorage> list = dataStorageService.getAll();
         return list;
@@ -54,7 +53,7 @@ public class ComponentsController {
         return list;
     }
 
-    @GetMapping("/power-supply")
+    @GetMapping("/power-supplies")
     public List<PowerSupply> getPowerSupply() {
         List<PowerSupply> list = powerSupplyService.getAll();
         return list;
@@ -72,7 +71,7 @@ public class ComponentsController {
         return list;
     }
 
-    @GetMapping("/ram-memory")
+    @GetMapping("/ram-memories")
     public List<RamMemory> getRamMemory() {
         List<RamMemory> list = ramMemoryService.getAll();
         return list;

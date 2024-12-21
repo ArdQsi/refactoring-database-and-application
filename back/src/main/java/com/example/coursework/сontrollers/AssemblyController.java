@@ -24,7 +24,7 @@ public class AssemblyController {
     final private ProcessorsService processorsService;
     final private RamMemoryService ramMemoryService;
 
-    @PostMapping("/assembly")
+    @PostMapping("/assemblies")
     public PCAssembly getAssembly(@Valid @RequestBody ComponentsIdDto componentsId) {
         System.out.println(componentsId.toString());
         ComputerCases computerCases = computerCasesService.getById(componentsId.getComputercasesid());
