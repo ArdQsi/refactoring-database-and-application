@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "powersupply")
 public class PowerSupply{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

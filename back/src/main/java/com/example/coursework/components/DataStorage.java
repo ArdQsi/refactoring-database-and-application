@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "datastorage")
 public class DataStorage{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

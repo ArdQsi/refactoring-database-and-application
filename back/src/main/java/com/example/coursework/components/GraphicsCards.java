@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "graphicscards")
 public class GraphicsCards{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "motherboards")
 public class MotherBoards{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

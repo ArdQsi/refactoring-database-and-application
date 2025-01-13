@@ -18,8 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ResultRepository {
     private final JdbcTemplate jdbcTemplate;
-//    @Query(value = "SELECT * FROM getcomputerforprice(:price);")
-//    List<Result> allResult(@Param("price") int price);
 
     public List<Result> allResult(int price) {
         String sql = "SELECT computercasesid, computercases, datastorageid, datastorage," +

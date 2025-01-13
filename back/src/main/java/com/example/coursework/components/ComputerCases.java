@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ComputerCases{
+@Table(name = "computercases")
+public class ComputerCases {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
