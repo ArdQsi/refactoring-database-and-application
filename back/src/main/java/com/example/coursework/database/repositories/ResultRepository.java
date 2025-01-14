@@ -1,11 +1,7 @@
 package com.example.coursework.database.repositories;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jdbc.repository.query.Query;
 import com.example.coursework.database.Result;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;

@@ -43,7 +43,7 @@ public class AuthenticationController {
         user.setEmail(registerRequest.getEmail());
 
         userRepository.save(user);
-        return ResponseEntity.ok().body(user);
+        return signin(new AuthenticationRequest(registerRequest.getUsername(), registerRequest.getPassword()));
     }
 
     @PostMapping("/signin")
